@@ -1,5 +1,6 @@
 db.sqlite3
-/static
+/static/svg
+/static/_clearBootStrap
 __pycache__
 svgtovenv
 *.pyc

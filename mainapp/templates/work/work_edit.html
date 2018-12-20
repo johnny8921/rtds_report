@@ -1,0 +1,27 @@
+{% extends 'work/base.html' %}
+{% load l10n %}
+
+{% block content %}
+<div class="col">
+    <div class="row-sm">
+        <h3>Работа</h3>
+    </div>
+    <form method="POST"> {% csrf_token %}
+        <div class="col-sm post-form"></div>
+            <table class="table table-hover">
+            {{ form.as_table }}
+            </table>
+        </div>
+
+        <div class="card-body">
+            <button type="submit" class="save btn btn-primary" id="btn-submit">Сохранить<i class="fa fa-save ml-2" aria-hidden="true"></i> </button>
+            <a href="{% url 'device_list' %}" class="save btn btn-info">Отмена<i class="fa fa-undo ml-2" aria-hidden="true"></i></a>
+        </div>
+{% comment %} 
+        <div class="card-body">
+            <button type="submit" class="save btn btn-primary btn-block">Сохранить <i class="fa fa-save px-2" aria-hidden="true"></i></button>
+        </div> {% endcomment %}
+    </form>
+</div>
+
+{% endblock %}

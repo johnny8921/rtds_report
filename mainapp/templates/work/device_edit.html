@@ -1,0 +1,40 @@
+{% extends 'work/base.html' %}
+{% load l10n %}
+{% block content %}
+    
+<h3>Устройство</h3>
+
+<form method="POST"> {% csrf_token %}
+    <div class="post-form" style="width: 100%;">
+        <table class="table table-hover post-form">
+        {{ form.as_table }}
+        </table>
+    </div>
+    <div class="card-body">
+        <button type="submit" class="save btn btn-primary" id="btn-submit">Сохранить<i class="fa fa-save ml-2" aria-hidden="true"></i> </button>
+        <a href="{% url 'device_list' %}" class="save btn btn-info">Отмена  <i class="fa fa-undo ml-2" aria-hidden="true"></i></a>
+    </div>
+</form>
+
+<script>
+window.onload = disable();
+
+function disable(){
+    document.getElementById("work_number").disabled=false;
+    document.getElementById("work_date").disabled=false;
+    
+    if (document.getElementById("state").value == "В запасе"){
+        document.getElementById("work_date").disabled=true;    
+        document.getElementById("work_number").disabled=true;
+        document.getElementById("work_number").value="";
+        document.getElementById("work_date").value="";
+        
+    }
+
+}
+    
+
+
+</script>
+{% endblock %}
+

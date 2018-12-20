@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru" {% if user.is_anonymous %} style="height: 100%" {% endif %}>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Система ведения учета ремонта горочных устройств </title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}"> {% endcomment %}
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="{% static 'css/mdb.min.css'%}" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="{% static 'css/my.css'%}" rel="stylesheet">
+    </head>
+
+
+    <body class="bg" {% if user.is_anonymous %} style="height: 100%" {% endif %}>
+        {% comment %} <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-custom scrolling-navbar fixed-top"> {% endcomment %}
+         <nav class="navbar fixed-top navbar-expand-lg navbar-dark blue-gradient scrolling-navbar">
+            <a href="/" class="navbar-brand">Система ведения учета ремонта горочных устройств</a>
+            {% comment %} <a href="/" class="navbar-brand">Система</a> {% endcomment %}
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#mainMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        {% comment %} <li class="navbar-item">
+                            <a href="/work_list" class="nav-link">Список работ</a>
+                        </li> {% endcomment %}
+                        {% comment %} <li class="navbar-item">
+                            <a href="/device_list" class="nav-link">Список устройств</a>
+                        </li> {% endcomment %}
+                        {% comment %} <li class="navbar-item">
+                            <a href="#" class="nav-link">О системе</a>
+                        </li> {% endcomment %}
+                        <li class="navbar-item">
+                            <a href="#" class="nav-link button-text"><i class="fa fa-envelope fa-lg xl-3 " aria-hidden="true"></i></a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#" class="nav-link text-light"> Здравствуйте,  {{user.last_name}} {{ user.first_name}} <i class="fa fa-user-circle-o fa-lg mx-2" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="/logout" class="btn btn-primary btn-sm" role="button">Выйти</a> 
+                        </li>
+                    {% else %}
+                        <form class="form-inline" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                            <div class="input-group-prepend" >
+                                <span class="input-group-text lg-icon">id</span>
+                                <input type="text" class="form-control" name="username" id="id_username" placeholder="Логин">
+                            </div>    
+                            <div class="input-group-prepend" style="margin-left:5px">
+                                <span class="input-group-text lg-icon">pw</span>
+                                <input type="password" class="form-control" name="password" id="id_password" placeholder="Пароль">
+                            </div>
+                            <div class="input-group-prepend">
+                                <button type="submit" class="btn btn-primary btn-sm">Войти</button>
+                            </div>   
+                        </form>
+                    {% endif %}   
+                </ul>
+            </div>
+        </nav>
+        {% comment %} <div class="bg">  {% endcomment %}
+            <div class="container text-dark" style="padding-top:20px; padding-bottom:20px margin-bottom:40px;">
+                {% if user.is_authenticated %}
+                    {% block content %}
+                    {% endblock %}
+                {% else %}
+                <div id="not-login" class="py-5 text-center" >
+                    <h1> Добро пожаловать!</h1>
+                    <h3 > <a href="/login" style="link">Авторизуйтесь</a> для работы в системе</h3>
+                </div>
+                {% endif %}   
+            </div>
+        {% comment %} </div> {% endcomment %}
+        {% comment %} <div class="navbar fixed-bottom navbar-dark justify-content-center text-center text-light" style=>
+            <a href="http://www.niias.ru" class=" text-light ">Ростовский филиал АО "НИИАС"</a> , 2018
+        </div> {% endcomment %}
+    
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'js/jquery-3.2.1.slim.min.js'%}"></script>
+        <script src="{% static 'js/popper.min.js'%}"></script>
+        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+
+    </body>
+
+</html>

@@ -1,0 +1,37 @@
+{% extends 'work/base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<h3> Выполненные работы</h3>
+    <table class="table table-hover ">
+        <thead >
+            <tr>
+                <th>Серийный номер</th>
+                <th>Дата</th>
+                <th>Работа</th>
+                {% comment %} <th>Наименование работы</th> {% endcomment %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for work in works %}
+            <tr>
+                <td><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.factory_number }}</a></td>
+                <td><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.date }}</a></td>
+                <td style="word-break: break-all"><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.work_body }}</a></td>
+                {% comment %} <td><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.published_date }}</a></td> {% endcomment %}
+                {% comment %} <td><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.author.last_name}} {{ work.author.first_name}}</a></td> {% endcomment %}
+                {% comment %} <td><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.deviceType }} {{ work.number }}</a></td> {% endcomment %}
+                {% comment %} <td style="word-break: break-all"><a href=" {% url 'work_detail' pk=work.pk %} " class="tableLinkColor">{{ work.workBody}}</a></td> {% endcomment %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="jumbotron col-sm jumbotron-fluid">
+        <div class="container">
+            <h1> Добро пожаловать!</h1>
+            <h4> <a href="/login" style="link">Авторизуйтесь</a> для работы в системе</h4>
+        </div>
+    </div>
+    {% endif %}   
+{% endblock %}    

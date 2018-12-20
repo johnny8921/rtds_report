@@ -1,0 +1,100 @@
+{% extends 'work/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="card">
+    {% comment %} <img src="{% static 'img/wrench.jpg' %}" alt="My image" width="400"> {% endcomment %}
+    {% comment %} <img src="#" alt=""> {% endcomment %}
+    <div class="card-body"> 
+        <h3 class="card-title mb-0">{{ device.device_type }} з/н {{ device.factory_number }}</h5>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-sm-6">
+                <p class="card-context"> 
+                    Дата производства: {{ device.factory_date }}
+                </p>
+            </div
+            <div class="col-sm-6">
+                    Дата установки: 
+                    {% if device.work_date == None %} 
+                        В запасе
+                    {% else %}
+                        {{ device.work_date }}
+                    {% endif %}
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="card-context"> 
+                {{ device.state }}
+                {% if device.state == "В запасе" %}
+                    на складе
+                {% else %} 
+                    {% if device.work_number == ""%}
+                    {% else %}
+                        на {{ device.work_number }}
+                    {% endif %}
+                {% endif %}
+                    {% if device.work_station == ""%}
+                    {% else %}     
+                        на станции {{ device.work_station }}
+                    {% endif %}
+            </p>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover table-bordered text-center table-responsive-md" cellspacing="0" width="100%" id="myTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Дата</th>
+                        <th onclick="sortTable(1)" class="text-left">Работа</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for work in works %}
+                <tr class="border-table-undef">
+                    <td class="row-sm-3"><a>{{ work.date }}</a></td>
+                    <td class="row-sm-6 text-left"><a> {{work.work_body}}</a></td>
+                    <td class="row-sm-3">
+                        <div class="btn-group">
+                            <a href="{% url 'device_work_edit' devicepk=device.pk pk=work.pk %}" class="btn btn-default btn-sm"> <i class="fa fa-pencil m-2" aria-hidden="true"></i></a>
+                            <button type="button" class="btn btn-default  btn-rounded dropdown-toggle btn-sm px-3" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="{% url 'device_work_remove' devicepk=device.pk pk=work.pk %}" class="dropdown-item">
+                            Удалить Работу</a>
+                            </div>
+                        </div>            
+                    </td>
+                </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="card-body">
+        <a href="{% url 'device_work_new' devicepk=device.pk %}" class="btn btn-primary button-text">Добавить работу <i class="fa fa-plus ml-2" aria-hidden="true"></i></a>
+        <a href="{% url 'device_work_new' devicepk=device.pk %}" class="btn btn-primary button-icon"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        {% comment %} <a href="{% url 'device_edit' pk=device.pk %}" class="btn btn-default">Редактировать устройство</a> {% endcomment %}
+        {% comment %} <a href="{% url 'device_remove' pk=device.pk %}" class="btn btn-default">Удалить устройство</a> {% endcomment %}
+        
+        <div class="btn-group">
+            <a href="{% url 'device_edit' pk=device.pk %}" class="btn btn-default button-text">Редактировать устройство <i class="fa fa-pencil ml-2" aria-hidden="true"></i></a>
+            <a href="{% url 'device_edit' pk=device.pk %}" class="btn btn-default button-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <button type="button" class="btn btn-default dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a href="{% url 'device_remove' pk=device.pk %}" class="dropdown-item">Удалить устройство</a>
+            </div>
+        </div>
+        <a href="/" class="btn btn-default button-text">Назад <i class="fa fa-undo ml-2" aria-hidden="true"></i></a>
+        <a href="/" class="btn btn-default button-icon"><i class="fa fa-undo" aria-hidden="true"></i></a>
+
+        
+</div>
+
+    </div>
+</div>
+{% endblock %}    

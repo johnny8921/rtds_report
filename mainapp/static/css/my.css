@@ -1,0 +1,173 @@
+.tableLinkColor {
+    color: inherit;
+}
+
+.lg-icon {
+    margin-right:1px;
+}
+
+.bg{
+  /* The image used */
+  background-image: url('/static/img/main_image2.jpg');
+  background-color: black;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(5px);
+  -webkit-filter: blur(5px) */
+}
+
+.container {
+  margin-top: 70px;
+  background-color: rgba(206, 204, 204, 0.795);
+}
+
+
+.not-login {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 2;
+  width: 50%;
+  height:90%;
+}
+
+
+.border-table-warning{
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-color: #00bcd4;
+}
+.border-table-danger{
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-color: #f44336;
+  
+}
+.border-table-normal{
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-color: #4caf50;
+}
+
+.border-table-undef{
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-color: lightgray;
+}
+
+@media (min-width:1000px) {
+  .button-icon{
+      display:none;
+  }
+}
+
+@media (max-width:1000px) {
+  .button-text{
+      display:none;
+  }
+}
+
+/* 
+thead>tr, thead>td, {
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-color:  lightgrey;
+  cursor: pointer;
+
+} */
+
+fixheight {
+  margin: auto !important;
+}
+
+
+
+
+/* .margin-left-20 {
+    margin-left: 20px
+} */
+
+/* .post-form textarea, .post-form input {
+    width: 100%;
+}
+.post-form th {
+    font-weight: normal !important;
+    font-size: 14 !important; */
+    /* font-weight-normal; */
+/* } */
+
+/* body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  } */
+
+
+/* * {
+    box-sizing: border-box;
+  } */
+/* 
+.bg-image {
+    /* background-image: url('/static/img/main_image2.jpg'); */
+    /* filter: blur(5px); */
+    /* -webkit-filter: blur(5px); */
+    
+    /* Full height */
+    /* height: 100%;  */
+    /* width: 100%; */
+    /* background-color: #464646;  */
+    /* Center and scale the image nicely */
+    /* background-attachment: fixed;   */
+    /* background-position: center center; */
+    /* background-repeat: repeat; */
+    /* background-size: cover; */
+    /* overflow:hidden; */
+    /* filter: blur(5px); */
+    /* -webkit-filter: blur(5px); */
+    
+    /* Full height */
+    /* height: 100%;  */
+    /* width: 100%; */
+    /* background-color: #464646;  */
+    /* Center and scale the image nicely */
+    /* background-attachment: fixed;   */
+    /* background-position: center center; */
+    /* background-repeat: repeat; */
+    /* background-size: cover; */
+    /* overflow:hidden; */
+    /* position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2; */
+/* } */
+
+
+
+/* 
+  .table-wrapper-scroll-y {
+    display: block;
+    max-height: 500px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    } */
+
+
+  /* .bg-text {
+    background-color: rgb(0,0,0); 
+    background-color: rgba(206, 204, 204, 0.795);
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 2;
+    width: 85%;
+    height:90%;
+  } */
+
